@@ -74,19 +74,67 @@ function displayImage(image_tag,choice) {
 let player_choice, computer_choice, player_score = 0, computer_score = 0;
 const buttons = document.querySelectorAll("div.player-choices > button");
 const computer_move = document.querySelector(".computer-choice");
-const results = document.querySelector(".results");
+const player_image = document.querySelector("#player > img");
+const computer_image = document.querySelector("#computer > img");
+const results = document.querySelector(".logs");
 buttons.forEach(button => {
-    button.addEventListener("click", () => {
-        player_choice = button.textContent.toLowerCase();
+    button.addEventListener("click", playerMove);
+});
+
+function playerMove() {
+        player_choice = this.textContent.toLowerCase();
         computer_choice = computerPlay().toLowerCase();
-        const player_image = document.querySelector("#player > img");
-        const computer_image = document.querySelector("#computer > img");
         displayImage(player_image,player_choice);
         displayImage(computer_image, computer_choice);
         computer_move.textContent = "The Computer chose " + computer_choice;
         const div = document.createElement("div");
         div.textContent = playRound(player_choice, computer_choice);
         results.append(div);
+        checkGameOver();
+}
+
+function checkGameOver() {
+    if (player_score == 5 || computer_score == 5)
+    {
+        const div = document.createElement("div");
+        if (player_score == 5)
+        {
+            div.textContent = "Congrats, you win the game!";
+        }
+        else {
+            div.textContent = "Oh no! The computer won the game!"
+        }
+        results.append(document.createElement("br"));
+        results.append(div);
+        buttons.forEach(button => {
+            button.removeEventListener("click", playerMove);
+        });
+
+        const play_again = document.createElement("button");
+        play_again.textContent = "Play Again";
+        play_again.addEventListener("click", resetGame);
+        results.append(play_again);
+    }
+}
+
+function resetGame() {
+    player_score = 0;
+    computer_score = 0;
+    const score1 = document.querySelector("#player-score");
+    score1.textContent = "Score: " + player_score;
+
+    const score2 = document.querySelector("#computer-score");
+    score2.textContent = "Score: " + computer_score;
+
+    while (results.lastElementChild) {
+        results.removeChild(results.lastElementChild);
+      }
+    computer_move.textContent = "";
+    buttons.forEach(button => {
+        button.addEventListener("click", playerMove);
     });
-});
+    player_image.setAttribute("src"," ");
+    computer_image.setAttribute("src"," ");
+}
+
 

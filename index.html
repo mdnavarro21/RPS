@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div><h1>Rock-Paper-Scissors</h1></div>
-    <div class = "main centered">
+    <div class = "title">
+        <h1>Rock-Paper-Scissors</h1>
+        <h2>Best to 5 wins!</h2>
+    </div>
+    <div class = "main">
         <div class = "player box" id = "player">
             <h1>Player</h1>
             <div class = "score" id = "player-score">Score: 0</div><br>
@@ -18,13 +21,17 @@
             </div><br>
             <img>
         </div>
+        <div class = "results box">
+            <h1>Results</h1>
+            <div class = "logs"></div>
+        </div>
         <div class = "player box" id = "computer">
             <h1>Computer</h1>
             <div class = "score" id = "computer-score">Score: 0</div><br>
             <div class = "computer-choice"></div><br>
             <img>
         </div>
-        <div class = "results box"><h1>Results</h1></div>
+        
     </div>
     <script src="script.js"></script>
 </body>
