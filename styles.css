@@ -1,0 +1,53 @@
+h1 {
+    text-align: center;
+}
+
+.centered {
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    margin-top: -60px;
+    margin-left: -50px;
+}
+
+.main {
+    display: flex;
+    align-items: stretch;
+    border-style: solid;
+    height: 550px;
+    width: 1000px;
+}
+
+.box {
+    border-style: solid;
+    width: 39%;
+}
+
+.player {
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+}
+
+.player-choices {
+    display: flex;
+    justify-content: space-between;
+}
+
+.player-choices > button {
+    width: 100px;
+    height: 50px;
+}
+
+img {
+    position: absolute;
+    width: 90%;
+    left: 4%;
+    bottom: 20px;
+    height: 60%;
+}
+
+.results {
+    width: 22%;
+}
+
